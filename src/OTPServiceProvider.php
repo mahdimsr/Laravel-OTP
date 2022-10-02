@@ -2,9 +2,9 @@
 
 namespace Msr\OTP;
 
+use Msr\OTP\Commands\OTPCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Msr\OTP\Commands\OTPCommand;
 
 class OTPServiceProvider extends PackageServiceProvider
 {
