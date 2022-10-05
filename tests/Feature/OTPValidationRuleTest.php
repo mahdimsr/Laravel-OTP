@@ -22,3 +22,12 @@ it('validate not exiting otp', function ()
 
     $this->assertFalse((new OTPValidationRule($otp->passwordName()))->passes('otp-code','12345'));
 });
+
+it('generate otp with expire time', function ()
+{
+    $otp = OTP::generate(NumericGenerator::class)->save('feature-otp-expire', 1);
+
+    sleep(2);
+
+    $this->assertFalse((new OTPValidationRule($otp->passwordName()))->passes('otp-code',$otp->generatedPassword()));
+});

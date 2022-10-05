@@ -2,6 +2,7 @@
 
 namespace Msr\OTP;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Msr\OTP\Exceptions\PasswordNotGeneratedException;
 use Msr\OTP\Generator\BaseOTPGenerator;
@@ -33,13 +34,21 @@ class OTP
      * @return static
      * @throws \Throwable
      */
-    public static function save(string $name): self
+    public static function save(string $name, int $seconds = null): self
     {
-        throw_if(self::$generatedPassword == null, new PasswordNotGeneratedException());
+        throw_if(self::$generatedPassword == null, (new PasswordNotGeneratedException())->getMessage());
 
         self::$passwordName = $name;
 
-        Cache::put(self::$passwordName, self::$generatedPassword);
+        if ($seconds)
+        {
+            Cache::put(self::$passwordName, self::$generatedPassword, Carbon::now()->addSeconds($seconds));
+        }
+        else
+        {
+            Cache::put(self::$passwordName, self::$generatedPassword);
+        }
+
 
         return new self();
 
