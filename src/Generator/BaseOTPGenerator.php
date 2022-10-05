@@ -7,7 +7,7 @@ abstract class BaseOTPGenerator
     /**
      * generate password for one time password
      *
-     * @return $this
+     * @return mixed
      */
     abstract public function generate(): mixed;
 

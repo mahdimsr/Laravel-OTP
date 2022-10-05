@@ -3,6 +3,7 @@
 namespace Msr\OTP;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Lang;
 
 class OTPValidationRule implements Rule
 {
@@ -18,8 +19,8 @@ class OTPValidationRule implements Rule
         return OTP::validate($value, $this->otpName);
     }
 
-    public function message()
+    public function message(): string
     {
-        // TODO: Implement message() method.
+        return Lang::get('validation.custom.otp');
     }
 }
