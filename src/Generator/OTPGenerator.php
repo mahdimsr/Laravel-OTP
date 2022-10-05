@@ -1,0 +1,23 @@
+<?php
+
+namespace Msr\OTP\Generator;
+
+abstract class OTPGenerator
+{
+    /**
+     * generate password for one time password
+     *
+     * @return $this
+     */
+    abstract function generate(): mixed;
+
+    /**
+     * number of password chars
+     *
+     * @return int
+     */
+    public function digits(): int
+    {
+        return 6;
+    }
+}
