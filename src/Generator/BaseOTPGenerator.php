@@ -2,7 +2,7 @@
 
 namespace Msr\OTP\Generator;
 
-abstract class OTPGenerator
+abstract class BaseOTPGenerator
 {
     /**
      * generate password for one time password

@@ -2,7 +2,7 @@
 
 namespace Msr\OTP\Generator;
 
-class NumericGenerator extends OTPGenerator
+class NumericGenerator extends BaseOTPGenerator
 {
 
     /**
