@@ -9,6 +9,7 @@ use Msr\OTP\Generator\BaseOTPGenerator;
 class OTP
 {
     private mixed $generatedPassword = null;
+    private static string $passwordName;
 
     /**
      * generate one time password with passed otp generator
@@ -52,6 +53,11 @@ class OTP
         return Cache::get($name);
     }
 
+    public static function validate(mixed $password, string $name): bool
+    {
+        return self::password($name) == $password;
+    }
+
     /**
      * get generated password
      *
@@ -60,5 +66,15 @@ class OTP
     public function generatedPassword(): mixed
     {
         return $this->generatedPassword;
+    }
+
+    /**
+     * name that password saved in cache
+     *
+     * @return string
+     */
+    public function passwordName(): string
+    {
+        return self::$passwordName;
     }
 }
