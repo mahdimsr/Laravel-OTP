@@ -5,17 +5,17 @@ namespace Msr\OTP;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Msr\OTP\Exceptions\PasswordNotGeneratedException;
-use Msr\OTP\Generator\BaseOTPGenerator;
 
 class OTP
 {
     private mixed       $generatedPassword = null;
-    private string|null $passwordName      = null;
+
+    private string|null $passwordName = null;
 
     /**
      * generate one time password with passed otp generator
      *
-     * @param string $OTPGeneratorClassName
+     * @param  string  $OTPGeneratorClassName
      * @return static
      */
     public function generate(string $OTPGeneratorClassName): self
@@ -30,8 +30,9 @@ class OTP
     /**
      * save generated password in cache with give name
      *
-     * @param string $name
+     * @param  string  $name
      * @return static
+     *
      * @throws \Throwable
      */
     public function save(string $name, int $seconds = null): self
@@ -40,12 +41,9 @@ class OTP
 
         $this->passwordName = $name;
 
-        if ($seconds)
-        {
+        if ($seconds) {
             Cache::put($this->passwordName, $this->generatedPassword, Carbon::now()->addSeconds($seconds));
-        }
-        else
-        {
+        } else {
             Cache::put($this->passwordName, $this->generatedPassword);
         }
 
@@ -55,7 +53,7 @@ class OTP
     /**
      * get one time password from cache with its name
      *
-     * @param string $name
+     * @param  string  $name
      * @return mixed
      */
     public static function password(string $name): mixed
