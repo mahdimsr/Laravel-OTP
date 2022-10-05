@@ -8,21 +8,21 @@ use Msr\OTP\Generator\BaseOTPGenerator;
 
 class OTP
 {
-    private static mixed $generatedPassword = null;
+    private mixed $generatedPassword = null;
 
     /**
      * generate one time password with passed otp generator
      *
-     * @param BaseOTPGenerator $OTPGenerator
+     * @param string $OTPGeneratorClassName
      * @return static
      */
-    public static function generate(string $OTPGeneratorClassName): self
+    public function generate(string $OTPGeneratorClassName): self
     {
         $OTPGenerator = new $OTPGeneratorClassName();
 
-        self::$generatedPassword = $OTPGenerator->generate();
+        $this->generatedPassword = $OTPGenerator->generate();
 
-        return new self();
+        return $this;
     }
 
     /**
@@ -32,14 +32,13 @@ class OTP
      * @return static
      * @throws \Throwable
      */
-    public static function save(string $name): self
+    public function save(string $name): self
     {
-        throw_if(self::$generatedPassword == null, new PasswordNotGeneratedException());
+        throw_if($this->generatedPassword == null, (new PasswordNotGeneratedException())->getMessage());
 
-        Cache::put($name, self::$generatedPassword);
+        Cache::put($name, $this->generatedPassword);
 
-        return new self();
-
+        return $this;
     }
 
     /**
@@ -60,6 +59,6 @@ class OTP
      */
     public function generatedPassword(): mixed
     {
-        return self::$generatedPassword;
+        return $this->generatedPassword;
     }
 }
