@@ -4,16 +4,20 @@ use Msr\OTP\Exceptions\PasswordNotGeneratedException;
 use Msr\OTP\Generator\NumericGenerator;
 use Msr\OTP\OTP;
 
-it('generate otp and assign name to it then get password with its name and compares',function ()
+dataset('otp', [
+    fn() => new OTP()
+]);
+
+it('generate otp and assign name to it then get password with its name and compares', function (OTP $otp)
 {
-    $otp = OTP::generate(NumericGenerator::class)->save('feature-test-otp');
+    $otp->generate(NumericGenerator::class)->save('feature-test-otp');
 
-    $this->assertEquals($otp->generatedPassword(),OTP::password('feature-test-otp'));
-});
+    $this->assertEquals($otp->generatedPassword(), OTP::password('feature-test-otp'));
+})->with('otp');
 
-it('try to save not generated password', function ()
+it('try to save not generated password', function (OTP $otp)
 {
-    $this->expectException(PasswordNotGeneratedException::class);
+    $this->expectExceptionMessage((new PasswordNotGeneratedException())->getMessage());
 
-    OTP::save('expect-error-exception');
-});
+    $otp->save('expect-error-exception');
+})->with('otp');
