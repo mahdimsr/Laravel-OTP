@@ -15,6 +15,5 @@ class OTPServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name('laravel-otp');
-
     }
 }

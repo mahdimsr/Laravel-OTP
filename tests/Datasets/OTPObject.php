@@ -2,6 +2,6 @@
 
 use Msr\OTP\OTP;
 
-dataset('otp',[
-    fn() => new OTP()
+dataset('otp', [
+    fn () => new OTP(),
 ]);
