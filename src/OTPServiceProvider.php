@@ -2,7 +2,6 @@
 
 namespace Msr\OTP;
 
-use Msr\OTP\Commands\OTPCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -15,11 +14,7 @@ class OTPServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
-        $package
-            ->name('laravel-otp')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-otp_table')
-            ->hasCommand(OTPCommand::class);
+        $package->name('laravel-otp');
+
     }
 }
