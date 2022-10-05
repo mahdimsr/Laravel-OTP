@@ -2,7 +2,6 @@
 
 namespace Msr\OTP;
 
-
 use Illuminate\Contracts\Validation\Rule;
 
 class OTPValidationRule implements Rule
