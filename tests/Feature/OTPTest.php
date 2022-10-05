@@ -13,7 +13,7 @@ it('generate otp and assign name to it then get password with its name and compa
 
 it('try to save not generated password', function ()
 {
-    $this->expectException(PasswordNotGeneratedException::class);
+    $this->expectExceptionMessage((new PasswordNotGeneratedException())->getMessage());
 
     OTP::save('expect-error-exception');
 });
