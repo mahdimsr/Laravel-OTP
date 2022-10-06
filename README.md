@@ -1,9 +1,8 @@
 #  laravel OTP options 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/msr/laravel-otp.svg?style=flat-square)](https://packagist.org/packages/msr/laravel-otp)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/msr/laravel-otp/run-tests?label=tests)](https://github.com/msr/laravel-otp/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/msr/laravel-otp/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/msr/laravel-otp/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/msr/laravel-otp.svg?style=flat-square)](https://packagist.org/packages/msr/laravel-otp)
+[![run-tests](https://github.com/mahdimsr/Laravel-OTP/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/mahdimsr/Laravel-OTP/actions/workflows/run-tests.yml)
+[![Fix PHP code style issues](https://github.com/mahdimsr/Laravel-OTP/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/mahdimsr/Laravel-OTP/actions/workflows/fix-php-code-style-issues.yml)
 
 generate OTP and validate it
 
